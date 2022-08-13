@@ -1,8 +1,14 @@
 /** Custom Variables */
 $primary: #407BFF;
 $btn-border-width: 0px;
-$border-radius: 7px;
-$input-btn-padding-y: .7rem - .0625rem !default;
-$btn-padding-x: 1.4rem !default;
+$border-radius: 8px;
+// $input-btn-padding-y: .7rem - .0625rem !default;
+// $btn-padding-x: 1.4rem !default;
 
 @import "~@tabler/core/src/scss/tabler.scss";
+
+.status {
+  height: 1.8px;
+  padding: 0.8rem 0.56rem;
+  border-radius: 5px;
+}

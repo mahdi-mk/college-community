@@ -39,6 +39,11 @@ class User extends Authenticatable
 
     public function questions()
     {
-        return $this->hasMany('questions');
+        return $this->hasMany('questions', 'author_id');
+    }
+
+    public function answers()
+    {
+        return $this->hasMany('answers', 'author_id');
     }
 }

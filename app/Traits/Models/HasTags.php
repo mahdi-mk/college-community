@@ -2,6 +2,8 @@
 
 namespace App\Traits\Models;
 
+use App\Models\Tag;
+
 trait HasTags
 {
 	public function tags()

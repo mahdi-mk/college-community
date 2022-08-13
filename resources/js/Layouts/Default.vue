@@ -1,8 +1,7 @@
 <template>
   <Nav>
-    <NavLink href="/" :active="$page.component === 'Home'">
-      Home
-    </NavLink>
+    <NavLink href="/" :active="$page.url === '/'" title="Home" />
+    <NavLink href="/questions" :active="$page.url.startsWith('/questions')" title="Questions" />
   </Nav>
 
   <div class="page-wrapper">

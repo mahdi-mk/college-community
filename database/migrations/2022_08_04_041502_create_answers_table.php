@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->text('content');
             $table->foreignId('author_id')->constrained('users');
+            $table->foreignId('question_id')->constrained('questions');
             $table->integer('votes')->default(0);
             $table->boolean('accepted')->default(false);
             $table->softDeletes();

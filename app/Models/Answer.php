@@ -19,4 +19,13 @@ class Answer extends Model
         'content',
         'author_id'
     ];
+
+    //-------------------------------------------------
+    // Relationships
+    //-------------------------------------------------
+
+    public function questions() 
+    {
+        return $this->belongsTo(Question::class);
+    }
 }

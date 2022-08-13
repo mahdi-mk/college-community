@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('content');
+            $table->integer('votes')->default(0);
             $table->foreignId('author_id')->constrained('users');
             $table->softDeletes();
             $table->timestamps();

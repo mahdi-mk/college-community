@@ -1,12 +1,16 @@
 <template>
   <div class="navbar-expand-md">
     <div class="collapse navbar-collapse" id="navbar-menu">
-      <div class="navbar navbar-light">
+      <div class="navbar navbar-dark" style="background-color: #0e2a47;">
         <div class="container-xl">
           <ul class="navbar-nav">
             <slot />
           </ul>
-          <div class="my-2 my-md-0 flex-grow-1 flex-md-grow-0 order-first order-md-last">
+          <div class="navbar-nav flex-row order-md-last">
+            <div class="nav-item d-none d-md-flex me-3">
+              <Link class="btn btn-primary btn-pill" href="/questions/create" v-if="auth">Ask Question</Link>
+              <Link href="/login" class="btn btn-primary btn-pill" v-else>Login</Link>
+            </div>
             <div class="nav-item dropdown" v-if="auth">
               <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu" aria-expanded="false">
                 <span class="avatar avatar-sm" style="background-image: url(./static/avatars/000m.jpg)"></span>
@@ -21,11 +25,8 @@
                 <a href="#" class="dropdown-item">Feedback</a>
                 <div class="dropdown-divider"></div>
                 <a href="#" class="dropdown-item">Settings</a>
-                <Link href="logout" method="post" class="dropdown-item">Logout</Link>
+                <Link href="/logout" method="post" class="dropdown-item">Logout</Link>
               </div>
-            </div>
-            <div v-else>
-              <Link href="login" class="btn btn-primary">Login</Link>
             </div>
           </div>
         </div>
