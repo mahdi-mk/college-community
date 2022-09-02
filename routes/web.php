@@ -11,6 +11,9 @@ Route::get('/', HomePageController::class)->name('home');
 
 Route::get('tags/find', FindTagsController::class)->name('tags.find');
 
+//---------------------------------------------------------------------
+// Routes for questions
+//---------------------------------------------------------------------
 Route::resource('questions', QuestionController::class);
 
 Route::post('/answers/post', PostAnswerController::class)->name('answers.post');

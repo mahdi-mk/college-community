@@ -18575,3 +18575,63 @@ a:hover {
 .invalid-feedback {
   display: block;
 }
+
+.container-tight {
+  padding-left: 0rem !important;
+  padding-right: 0rem !important;
+}
+
+.py-1-4 {
+  padding-top: 1.4rem !important;
+  padding-bottom: 1.4rem !important;
+}
+
+.filter-list-item {
+  background-color: transparent;
+  color: rgb(105, 105, 105);
+  padding: 0.6rem 0.5rem;
+  border-radius: 15px;
+  margin-bottom: 6px;
+  font-weight: 400;
+}
+
+.text {
+  margin-right: 3px;
+  margin-left: 3px;
+}
+
+.filter-list-item:hover {
+  background-color: rgba(64, 123, 255, 0.1) !important;
+  color: #407BFF;
+  text-decoration: none;
+}
+
+.filter-list-item.active {
+  background-color: rgba(64, 123, 255, 0.1) !important;
+  color: #407BFF;
+  font-weight: 500;
+}
+
+.question-card-title {
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.question-card-title:hover {
+  text-decoration: none;
+  color: #407BFF;
+}
+
+.tag {
+  border: 1px solid #cbd5e1;
+  color: #64748b;
+  background-color: transparent;
+  border-radius: 50px;
+  padding: 0.1rem 0.8rem;
+  font-size: 0.77rem;
+}
+
+.tag:hover {
+  background-color: rgba(100, 116, 139, 0.1);
+  text-decoration: none;
+}

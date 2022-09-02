@@ -16,7 +16,7 @@
     <!-- CSS files -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
   </head>
-  <body>
+  <body style="background-color: white;">
     @inertia
 
     <!-- JS files -->
