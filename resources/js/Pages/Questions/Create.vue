@@ -7,45 +7,36 @@
       <form method="post" @submit.prevent="submit()">
         <div class="card-body">
           <!-- Title -->
-          <div class="mb-3">
-            <label for="title" class="form-label required">Title</label>
-            <input type="text" class="form-control" id="title" v-model="form.title">
-            <small class="form-hint">Choose a descriptive and short title for your question.</small>
+          <div class="mb-4">
+            <label for="title" class="form-label required">Question Title</label>
+            <input type="text" class="form-control" :class="{'is-invalid': errors.title}" id="title" v-model="form.title" required maxlength="200">
+            <span class="invalid-feedback" v-if="errors.title" v-text="errors.title"></span>
+            <small class="form-hint">Please enter a descriptive and short title.</small>
           </div>
 
           <!-- Tags -->
-          <div class="mb-3">
-            <label for="tags" class="form-label required">Tags</label>
+          <div class="mb-4">
+            <label for="tags" class="form-label required">Tags and Topics</label>
             <select id="tags" class="js-example-basic-single form-select w-full" v-model="form.tags" v-select2="tags">
               <!-- Remote -->
             </select>
-            <small class="form-hint">Choose at least 3 tags related to your question.</small>
+            <span class="invalid-feedback" v-if="errors.tags" v-text="errors.tags"></span>
+            <small class="form-hint mt-2">Choose at least 3 tags related to your question.</small>
           </div>
+
+          <hr>
 
           <!-- Content -->
           <div class="mb-3">
             <label for="tags" class="form-label required">Content</label>
-              <Editor
-                v-model="form.content"
-                :init="{
-                  height: 500,
-                  menubar: false,
-                  plugins: [
-                    'advlist autolink lists link image charmap print preview anchor',
-                    'searchreplace visualblocks code fullscreen',
-                    'insertdatetime media table paste code help wordcount'
-                  ],
-                  toolbar:
-                    'undo redo | formatselect | bold italic backcolor | \
-                    alignleft aligncenter alignright alignjustify | \
-                    bullist numlist outdent indent | removeformat | help'
-                }"
-              />
-              <small class="form-hint">Talk about your question in detail.</small>
+            <client-only>
+              <quill-editor v-model:value="form.content" id="editor" :options="editorOptions"></quill-editor>
+            </client-only>
+            <small class="invalid-feedback" v-if="errors.content" v-text="errors.content"></small>
           </div>
         </div>
         <div class="card-footer">
-          <button class="btn btn-primary btn-pill" type="submit">Publish</button>
+          <button class="btn btn-primary" type="submit">Publish</button>
         </div>
       </form>
     </div>
@@ -53,10 +44,10 @@
 </template>
 
 <script>
-import Editor from '@tinymce/tinymce-vue'
+import { quillEditor } from "vue3-quill";
 
 export default {
-  components: { Editor },
+  components: { quillEditor },
   props: {
     errors: Object
   },
@@ -66,7 +57,22 @@ export default {
         title: '',
         tags: [],
         content: ''
-      }
+      },
+      editorOptions: {
+        placeholder: 'Talk about your problem in detail, it\'s recommended to provide examples, links or anything that would help people understand your question. Enjoy :)',
+        modules: {
+          toolbar: [
+            ['bold', 'italic', 'underline', 'strike'],
+            [{ header: 1 }, { header: 2 }],
+            ['link'],
+            ['code-block'],
+            [{ list: 'ordered' }, { list: 'bullet' }],
+            [{ script: 'sub' }, { script: 'super' }],
+            [{ direction: 'rtl' }],
+            [{ color: [] }],
+          ],
+        }
+      },
     }
   },
   methods: {
@@ -100,3 +106,9 @@ export default {
   },
 }
 </script>
+
+<style lang="css" scoped>
+  #editor {
+    height: 400px !important;
+  }
+</style>

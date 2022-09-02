@@ -49,7 +49,7 @@ class QuestionController extends Controller
 
         $question->tags()->sync($request->tags);
 
-        return redirect()->route('questions.index');
+        return redirect()->route('questions.show', $question);
     }
 
     /**

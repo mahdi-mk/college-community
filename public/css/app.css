@@ -18556,8 +18556,27 @@ Antialiasing
 }
 
 .select2-selection__choice {
-  border-radius: 50px !important;
-  margin-top: 8px !important;
+  border-radius: 5px !important;
+  margin-top: 6px !important;
+  border: transparent !important;
+  color: #407BFF !important;
+  background-color: rgba(64, 123, 255, 0.1) !important;
+  padding: 0.2rem 0.5rem !important;
+  font-size: 0.9rem;
+}
+
+.select2-selection__choice__remove {
+  padding: 0.2rem 0.3rem !important;
+  border-right: 1px solid rgba(64, 123, 255, 0.2) !important;
+}
+
+.select2-selection__choice__remove:hover {
+  background-color: rgba(255, 0, 0, 0.1) !important;
+  color: red !important;
+}
+
+.select2-selection__choice__display {
+  margin-left: 18px;
 }
 
 * {
