@@ -1,15 +1,13 @@
 <template>
-<div class="card">
-  <div class="card-header">
+<div class="card mt-3">
+  <div class="card-header py-2">
     <div class="row align-items-center">
       <div class="col-auto">
-        <span class="avatar" style="background-image: url(./static/avatars/000m.jpg)"></span>
+        <span class="avatar avatar-sm" style="background-image: url(./static/avatars/000m.jpg)"></span>
       </div>
       <div class="col">
-        <div class="card-title">
-          <Link href="#">{{ answer.author.name }}</Link>
-        </div>
-        <div class="card-subtitle">50k XP</div>
+        <Link href="#">{{ answer.author.first_name + ' ' + answer.author.last_name }}</Link>
+        <div class="card-subtitle small">50k XP</div>
       </div>
     </div>
     <div class="card-actions d-flex align-items-center">
@@ -48,6 +46,7 @@
               <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
               <path d="M15 4v8h3.586a1 1 0 0 1 .707 1.707l-6.586 6.586a1 1 0 0 1 -1.414 0l-6.586 -6.586a1 1 0 0 1 .707 -1.707h3.586v-8a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1z" />
             </svg>
+            <span class="ms-2">3</span>
           </button>
         </div>
       </div>

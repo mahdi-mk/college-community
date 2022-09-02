@@ -18564,6 +18564,14 @@ Antialiasing
   font-family: "Inter", sans-serif;
 }
 
+a {
+  color: #0e2a47;
+}
+
+a:hover {
+  color: black;
+}
+
 .invalid-feedback {
   display: block;
 }

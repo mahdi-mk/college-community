@@ -6,8 +6,8 @@
         <div class="card-body">
           <!-- Title & Question Info -->
           <div class="border-bottom mb-3">
-            <h1 class="mb-2">{{ question.title }}</h1>
-            <div class="d-flex small">
+            <h2 class="mb-2">{{ question.title }}</h2>
+            <!-- <div class="d-flex small">
               <p class="me-5">
                 <span class="text-muted">Asked</span> {{ question.created_at }}
               </p>
@@ -17,7 +17,7 @@
               <p class="me-5">
                 <span class="text-muted">Viewd</span> 200 times
               </p>
-            </div>
+            </div> -->
           </div>
 
           <!-- Content -->

@@ -17,14 +17,15 @@ class Answer extends Model
 
     protected $fillable = [
         'content',
-        'author_id'
+        'author_id',
+        'question_id',
     ];
 
     //-------------------------------------------------
     // Relationships
     //-------------------------------------------------
 
-    public function questions() 
+    public function question() 
     {
         return $this->belongsTo(Question::class);
     }
