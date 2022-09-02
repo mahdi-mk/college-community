@@ -2,36 +2,41 @@
 
 namespace App\Models;
 
-use App\Traits\Models\HasAuthor;
-use App\Traits\Models\HasTags;
+use App\Enums\VoteType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Answer extends Model
+class Vote extends Model
 {
     use HasFactory;
-    use SoftDeletes;
-    use HasTags;
-    use HasAuthor;
-
+    
     protected $fillable = [
-        'content',
-        'author_id',
+        'user_id',
         'question_id',
+        'answer_id',
+        'type'
+    ];
+
+    protected $casts = [
+        'type' => VoteType::class
     ];
 
     //-------------------------------------------------
     // Relationships
     //-------------------------------------------------
 
-    public function question() 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function question()
     {
         return $this->belongsTo(Question::class);
     }
 
-    public function votes() 
+    public function answer()
     {
-        return $this->hasMany(Vote::class);
+        return $this->belongsTo(Answer::class);
     }
 }

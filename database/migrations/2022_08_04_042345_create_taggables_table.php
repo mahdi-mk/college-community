@@ -18,7 +18,6 @@ return new class extends Migration
             $table->foreignId('tag_id')->constrained('tags');
             $table->integer('taggable_id');
             $table->string('taggable_type');
-            $table->timestamps();
         });
     }
 

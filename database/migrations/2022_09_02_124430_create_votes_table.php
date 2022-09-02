@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\VoteType;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,13 +14,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('questions', function (Blueprint $table) {
+        Schema::create('votes', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('content');
-            $table->foreignId('author_id')->constrained('users');
-            $table->integer('votes')->default(0);
-            $table->softDeletes();
+            $table->foreignId('user_id')->nullable()->constrained()->onDelete('casecade');
+            $table->foreignId('question_id')->nullable()->constrained()->onDelete('casecade');
+            $table->foreignId('answer_id')->nullable()->constrained()->onDelete('casecade');
+            $table->tinyInteger('type')->required();
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('questions');
+        Schema::dropIfExists('votes');
     }
 };
