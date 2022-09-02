@@ -2,9 +2,11 @@
   <div class="border-bottom py-3">
     <div class="row">
       <div class="col-md-10">
-        <Link class="question-card-title mb-3" :href="`/questions/${question.id}`">
-          {{ question.title }}
-        </Link>
+        <div class="mb-3">
+          <Link class="question-card-title" :href="`/questions/${question.id}`">
+            {{ question.title }}
+          </Link>
+        </div>
         <div class="d-flex gap-1 mb-3">
           <Link class="tag" v-for="tag in question.tags" :key="tag.id">
             {{ tag.name }}
