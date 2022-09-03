@@ -62,8 +62,11 @@ class QuestionController extends Controller
     {
         $question->load(['tags', 'author']);
 
+        $authUserVote = $question->votes()->select('id', 'type')->where('user_id', auth()->id())->first();
+
         return inertia('Questions/Show', [
-            'question' => $question
+            'question' => $question,
+            'authUserVote' => $authUserVote
         ]);
     }
 

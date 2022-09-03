@@ -90,7 +90,22 @@ a:hover {
   margin: 0px 5px;
 }
 
-.action-button:hover {
-  background-color: rgba(#407BFF, 0.1) !important;
+.action-button-danger:hover {
+  background-color: rgba(red, 0.1);
+  color: red;
+}
+
+.action-button-primary:hover {
+  background-color: rgba(#407BFF, 0.1);
   color: #407BFF;
+}
+
+.action-button-primary.active {
+  background-color: rgba(#407BFF, 0.1);
+  color: #407BFF;
+}
+
+.action-button-danger.active {
+  background-color: rgba(red, 0.1);
+  color: red;
 }

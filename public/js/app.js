@@ -25104,6 +25104,58 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Components/Question/QuestionVotingButtons.vue?vue&type=script&lang=js":
+/*!************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Components/Question/QuestionVotingButtons.vue?vue&type=script&lang=js ***!
+  \************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: {
+    question: {
+      type: Object,
+      required: true
+    },
+    authUserVote: {
+      type: Object,
+      required: true
+    }
+  },
+  data: function data() {
+    var _this$authUserVote, _this$authUserVote2;
+
+    return {
+      hasUpvote: ((_this$authUserVote = this.authUserVote) === null || _this$authUserVote === void 0 ? void 0 : _this$authUserVote.type) == 1,
+      hasDownvote: ((_this$authUserVote2 = this.authUserVote) === null || _this$authUserVote2 === void 0 ? void 0 : _this$authUserVote2.type) == 0
+    };
+  },
+  methods: {
+    toggleUpvote: function toggleUpvote() {
+      var _this = this;
+
+      this.$http.post("/questions/".concat(this.question.id, "/upvote/toggle")).then(function () {
+        _this.hasUpvote = !_this.hasUpvote;
+        _this.hasDownvote = false;
+      });
+    },
+    toggleDownvote: function toggleDownvote() {
+      var _this2 = this;
+
+      this.$http.post("/questions/".concat(this.question.id, "/downvote/toggle")).then(function () {
+        _this2.hasDownvote = !_this2.hasDownvote;
+        _this2.hasUpvote = false;
+      });
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Layouts/Default.vue?vue&type=script&lang=js":
 /*!**********************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Layouts/Default.vue?vue&type=script&lang=js ***!
@@ -25520,15 +25572,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Answers_QuestionAnswers_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Answers/QuestionAnswers.vue */ "./resources/js/Pages/Answers/QuestionAnswers.vue");
 /* harmony import */ var _Answers_PostAnswerDialog_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Answers/PostAnswerDialog.vue */ "./resources/js/Pages/Answers/PostAnswerDialog.vue");
+/* harmony import */ var _Components_Question_QuestionVotingButtons_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Components/Question/QuestionVotingButtons.vue */ "./resources/js/Components/Question/QuestionVotingButtons.vue");
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
-    question: Object
+    question: Object,
+    authUserVote: Object
   },
   components: {
     QuestionAnswers: _Answers_QuestionAnswers_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
-    PostAnswerDialog: _Answers_PostAnswerDialog_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+    PostAnswerDialog: _Answers_PostAnswerDialog_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    QuestionVotingButtons: _Components_Question_QuestionVotingButtons_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   data: function data() {
     return {
@@ -25584,6 +25640,120 @@ __webpack_require__.r(__webpack_exports__);
     active: Boolean
   }
 });
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Components/Question/QuestionVotingButtons.vue?vue&type=template&id=49a07fd4":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Components/Question/QuestionVotingButtons.vue?vue&type=template&id=49a07fd4 ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
+  stroke: "none",
+  d: "M0 0h24v24H0z",
+  fill: "none"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
+  d: "M9 20v-8h-3.586a1 1 0 0 1 -.707 -1.707l6.586 -6.586a1 1 0 0 1 1.414 0l6.586 6.586a1 1 0 0 1 -.707 1.707h-3.586v8a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_3 = [_hoisted_1, _hoisted_2];
+
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "text-primary"
+}, "Upvote", -1
+/* HOISTED */
+);
+
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
+  stroke: "none",
+  d: "M0 0h24v24H0z",
+  fill: "none"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
+  d: "M15 4v8h3.586a1 1 0 0 1 .707 1.707l-6.586 6.586a1 1 0 0 1 -1.414 0l-6.586 -6.586a1 1 0 0 1 .707 -1.707h3.586v-8a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1z"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_7 = [_hoisted_5, _hoisted_6];
+
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "text-danger"
+}, "Downvote", -1
+/* HOISTED */
+);
+
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["action-button action-button-primary", {
+      'active': $data.hasUpvote
+    }]),
+    onClick: _cache[0] || (_cache[0] = function () {
+      return $options.toggleUpvote && $options.toggleUpvote.apply($options, arguments);
+    })
+  }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["icon", {
+      'icon-filled': $data.hasUpvote
+    }]),
+    width: "64",
+    height: "64",
+    viewBox: "0 0 24 24",
+    "stroke-width": "1.5",
+    stroke: "#407BFF",
+    fill: "none",
+    "stroke-linecap": "round",
+    "stroke-linejoin": "round"
+  }, _hoisted_3, 2
+  /* CLASS */
+  )), _hoisted_4], 2
+  /* CLASS */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["action-button action-button-danger", {
+      'active': $data.hasDownvote
+    }]),
+    onClick: _cache[1] || (_cache[1] = function () {
+      return $options.toggleDownvote && $options.toggleDownvote.apply($options, arguments);
+    })
+  }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["icon", {
+      'icon-filled': $data.hasDownvote
+    }]),
+    width: "64",
+    height: "64",
+    viewBox: "0 0 24 24",
+    "stroke-width": "1.5",
+    stroke: "#ff2825",
+    fill: "none",
+    "stroke-linecap": "round",
+    "stroke-linejoin": "round"
+  }, _hoisted_7, 2
+  /* CLASS */
+  )), _hoisted_8], 2
+  /* CLASS */
+  )], 64
+  /* STABLE_FRAGMENT */
+  );
+}
 
 /***/ }),
 
@@ -26936,8 +27106,9 @@ var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 );
 
 var _hoisted_8 = [_hoisted_7];
-
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"d-flex gap-1\"><button class=\"action-button\"><svg xmlns=\"http://www.w3.org/2000/svg\" class=\"icon\" width=\"64\" height=\"64\" viewBox=\"0 0 24 24\" stroke-width=\"1.5\" stroke=\"#9e9e9e\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path stroke=\"none\" d=\"M0 0h24v24H0z\" fill=\"none\"></path><path d=\"M9 20v-8h-3.586a1 1 0 0 1 -.707 -1.707l6.586 -6.586a1 1 0 0 1 1.414 0l6.586 6.586a1 1 0 0 1 -.707 1.707h-3.586v8a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z\"></path></svg><span>23</span></button><button class=\"action-button\"><svg xmlns=\"http://www.w3.org/2000/svg\" class=\"icon icon-tabler icon-tabler-arrow-big-down\" width=\"64\" height=\"64\" viewBox=\"0 0 24 24\" stroke-width=\"1.5\" stroke=\"#9e9e9e\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path stroke=\"none\" d=\"M0 0h24v24H0z\" fill=\"none\"></path><path d=\"M15 4v8h3.586a1 1 0 0 1 .707 1.707l-6.586 6.586a1 1 0 0 1 -1.414 0l-6.586 -6.586a1 1 0 0 1 .707 -1.707h3.586v-8a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1z\"></path></svg><span>2</span></button></div>", 1);
+var _hoisted_9 = {
+  "class": "d-flex gap-1"
+};
 
 var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "col-md-4"
@@ -26946,6 +27117,8 @@ var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 );
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_QuestionVotingButtons = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("QuestionVotingButtons");
+
   var _component_PostAnswerDialog = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PostAnswerDialog");
 
   var _component_QuestionAnswers = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("QuestionAnswers");
@@ -26961,7 +27134,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[0] || (_cache[0] = function ($event) {
       return $data.showPostAnswerDialog = true;
     })
-  }, _hoisted_8)]), _hoisted_9])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PostAnswerDialog, {
+  }, _hoisted_8)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_QuestionVotingButtons, {
+    question: $props.question,
+    authUserVote: $props.authUserVote
+  }, null, 8
+  /* PROPS */
+  , ["question", "authUserVote"])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PostAnswerDialog, {
     show: $data.showPostAnswerDialog
   }, null, 8
   /* PROPS */
@@ -75760,6 +75938,34 @@ const defaultOptions = {
 
 /***/ }),
 
+/***/ "./resources/js/Components/Question/QuestionVotingButtons.vue":
+/*!********************************************************************!*\
+  !*** ./resources/js/Components/Question/QuestionVotingButtons.vue ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _QuestionVotingButtons_vue_vue_type_template_id_49a07fd4__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./QuestionVotingButtons.vue?vue&type=template&id=49a07fd4 */ "./resources/js/Components/Question/QuestionVotingButtons.vue?vue&type=template&id=49a07fd4");
+/* harmony import */ var _QuestionVotingButtons_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./QuestionVotingButtons.vue?vue&type=script&lang=js */ "./resources/js/Components/Question/QuestionVotingButtons.vue?vue&type=script&lang=js");
+/* harmony import */ var F_Projects_college_community_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,F_Projects_college_community_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_QuestionVotingButtons_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_QuestionVotingButtons_vue_vue_type_template_id_49a07fd4__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Components/Question/QuestionVotingButtons.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
 /***/ "./resources/js/Layouts/Auth.vue":
 /*!***************************************!*\
   !*** ./resources/js/Layouts/Auth.vue ***!
@@ -76210,6 +76416,22 @@ if (false) {}
 
 /***/ }),
 
+/***/ "./resources/js/Components/Question/QuestionVotingButtons.vue?vue&type=script&lang=js":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/Components/Question/QuestionVotingButtons.vue?vue&type=script&lang=js ***!
+  \********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_QuestionVotingButtons_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_QuestionVotingButtons_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./QuestionVotingButtons.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Components/Question/QuestionVotingButtons.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
 /***/ "./resources/js/Layouts/Default.vue?vue&type=script&lang=js":
 /*!******************************************************************!*\
   !*** ./resources/js/Layouts/Default.vue?vue&type=script&lang=js ***!
@@ -76431,6 +76653,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_NavLink_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./NavLink.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Shared/NavLink.vue?vue&type=script&lang=js");
  
+
+/***/ }),
+
+/***/ "./resources/js/Components/Question/QuestionVotingButtons.vue?vue&type=template&id=49a07fd4":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/Components/Question/QuestionVotingButtons.vue?vue&type=template&id=49a07fd4 ***!
+  \**************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_QuestionVotingButtons_vue_vue_type_template_id_49a07fd4__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_QuestionVotingButtons_vue_vue_type_template_id_49a07fd4__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./QuestionVotingButtons.vue?vue&type=template&id=49a07fd4 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Components/Question/QuestionVotingButtons.vue?vue&type=template&id=49a07fd4");
+
 
 /***/ }),
 
