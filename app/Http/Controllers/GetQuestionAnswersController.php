@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Question;
 
-class GetQuestionsAnswersController extends Controller
+class GetQuestionAnswersController extends Controller
 {
     public function __invoke(Question $question)
     {

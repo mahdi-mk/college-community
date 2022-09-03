@@ -76,3 +76,21 @@ a:hover {
   background-color: rgba(#64748b, 0.1);
   text-decoration: none;
 }
+
+.action-button {
+  background-color: transparent;
+  border: transparent;
+  color: #64748b;
+  font-weight: 600;
+  border-radius: 10px;
+  padding: 0.5rem 0.4rem;
+}
+
+.action-button > span {
+  margin: 0px 5px;
+}
+
+.action-button:hover {
+  background-color: rgba(#407BFF, 0.1) !important;
+  color: #407BFF;
+}
