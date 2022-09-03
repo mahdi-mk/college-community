@@ -1,28 +1,31 @@
 <template>
   <div class="row">
     <div class="col-md-8">
-      <div class="mb-2">
-        <div class="border-bottom pb-2 mb-3">
+      <div class="question-card">
+        <div class="border-bottom pb-2">
           <h1>{{ question.title }}</h1>
+          <div class="small">
+            <span class="text-muted">Asked {{ question.created_at }} by </span>
+            <Link>{{ question.author.first_name + ' ' + question.author.last_name }}</Link>
+          </div>
         </div>
 
         <!-- Content -->
-        <div v-html="question.content"></div>
+        <div class="mt-3 mb-3" v-html="question.content"></div>
 
         <!-- Actions -->
-        <div class="d-flex justify-content-between border-y py-1 mt-3">
-          <div>
-            <button class="action-button" @click="showPostAnswerDialog = true">
-              <span>Answer</span>
-            </button>
-          </div>
+        <div class="d-flex justify-content-between border-top pt-2">
+          <!-- Voting -->
           <div class="d-flex gap-1">
             <QuestionVotingButtons :question="question" :authUserVote="authUserVote" />
           </div>
+
+          <!-- Post Answer -->
+          <button class="action-button action-button-primary" @click="showPostAnswerDialog = true">
+            <span>Answer</span>
+          </button>
         </div>
       </div>
-
-      <PostAnswerDialog :show="showPostAnswerDialog" />
 
       <!-- Answers -->
       <div>

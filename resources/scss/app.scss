@@ -109,3 +109,27 @@ a:hover {
   background-color: rgba(red, 0.1);
   color: red;
 }
+
+.answer-card {
+  border: 1px solid #e2e8f0;
+  padding: 15px 20px;
+  border-radius: 5px;
+  filter: drop-shadow(0 1px 1px rgb(0 0 0 / 0.05));
+}
+
+.answer-card:hover {
+  border: 1px solid #407BFF;
+  transition: all 0.4s;
+}
+
+.question-card {
+  border: 1px solid #e2e8f0;
+  padding: 15px 20px;
+  border-radius: 5px;
+  filter: drop-shadow(0 1px 1px rgb(0 0 0 / 0.05));
+}
+
+.question-card:hover {
+  border: 1px solid #407BFF;
+  transition: all 0.4s;
+}

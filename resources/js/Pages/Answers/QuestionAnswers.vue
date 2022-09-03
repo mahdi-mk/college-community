@@ -1,19 +1,18 @@
 <template>
-  <div>
-    <!-- <h3 class="mt-3 mb-3 pb-2 border-bottom">Answers</h3> -->
+  <div class="mt-4">
+    <h3 class="border-bottom py-2 mb-3">Answers</h3>
 
-    <template v-for="answer in answers" :key="answer.id">
+    <!-- <template v-for="answer in answers" :key="answer.id"> -->
       <AnswerCard :answer="answer" />
-    </template>
+    <!-- </template> -->
   </div>
 </template>
 
 <script>
 import AnswerCard from './AnswerCard.vue';
-import PostAnswerBtn from './PostAnswerBtn.vue';
 
 export default {
-  components: { AnswerCard, PostAnswerBtn },
+  components: { AnswerCard },
   props: {
     question: {
       type: Object,
