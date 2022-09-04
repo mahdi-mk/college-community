@@ -21,8 +21,8 @@
           </div>
 
           <!-- Post Answer -->
-          <button class="action-button action-button-primary" @click="showPostAnswerDialog = true">
-            <span>Answer</span>
+          <button class="action-button action-button-primary" data-bs-toggle="modal" data-bs-target="#post-answer-modal">
+            Answer
           </button>
         </div>
       </div>
@@ -36,22 +36,25 @@
 
     </div>
   </div>
+
+  <PostAnswerModal :question="question" />
 </template>
 
 <script>
 import QuestionAnswers from "../Answers/QuestionAnswers.vue";
 import PostAnswerDialog from "../Answers/PostAnswerDialog.vue";
 import QuestionVotingButtons from "../../Components/Question/QuestionVotingButtons.vue";
+import PostAnswerModal from "../../Components/Answer/PostAnswerModal.vue";
 
 export default {
   props: {
     question: Object,
     authUserVote: Object,
   },
-  components: { QuestionAnswers, PostAnswerDialog, QuestionVotingButtons },
+  components: { QuestionAnswers, PostAnswerDialog, QuestionVotingButtons, PostAnswerModal },
   data() {
     return {
-      showPostAnswerDialog: false,
+      
     }
   }
 }

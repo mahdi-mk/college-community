@@ -7,9 +7,11 @@
       <AnswerPlaceholder />
     </template>
 
-    <template v-else>
-      <AnswerCard :answer="answer" />
-    </template>
+    <div v-else>
+      <template v-for="answer in answers" :key="answer.id">
+        <AnswerCard :answer="answer" />
+      </template>
+    </div>
   </div>
 </template>
 

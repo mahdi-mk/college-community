@@ -6,19 +6,17 @@
           <span class="avatar avatar-sm" style="background-image: url(./static/avatars/000m.jpg)"></span>
         </div>
         <div class="col small">
-          <Link>Mahdi Mohammed</Link>
-          <div class="text-muted">2 weeks ago</div>
+          <Link>{{ answer.author.first_name + ' ' + answer.author.last_name }}</Link>
+          <div class="text-muted">{{ answer.created_at }}</div>
         </div>
       </div>
-      <div class="status status-primary">
+      <div class="status status-primary" v-if="answer.accepted">
         Best Answer
       </div>
     </div>
 
     <!-- Content -->
-    <div class="mt-3 mb-3">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam quisquam, dignissimos culpa in provident nostrum porro cum cupiditate similique commodi voluptatibus, quo ducimus vero! Ut nemo maxime commodi impedit repellat.
-    </div>
+    <div class="mt-3 mb-3" v-html="answer.content"></div>
 
     <!-- Actions -->
     <div class="border-top pt-2">
