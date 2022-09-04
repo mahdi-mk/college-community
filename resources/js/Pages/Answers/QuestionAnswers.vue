@@ -2,17 +2,23 @@
   <div class="mt-4">
     <h3 class="border-bottom py-2 mb-3">Answers</h3>
 
-    <!-- <template v-for="answer in answers" :key="answer.id"> -->
+    <template v-if="isLoading">
+      <AnswerPlaceholder />
+      <AnswerPlaceholder />
+    </template>
+
+    <template v-else>
       <AnswerCard :answer="answer" />
-    <!-- </template> -->
+    </template>
   </div>
 </template>
 
 <script>
-import AnswerCard from './AnswerCard.vue';
+import AnswerCard from '../../Components/Answer/AnswerCard.vue';
+import AnswerPlaceholder from '../../Components/Answer/AnswerPlaceholder.vue';
 
 export default {
-  components: { AnswerCard },
+  components: { AnswerCard, AnswerPlaceholder },
   props: {
     question: {
       type: Object,
@@ -20,11 +26,13 @@ export default {
     }
   },
   data: () => ({
-    answers: []
+    answers: [],
+    isLoading: true
   }),
   mounted() {
     this.$http.get(`/questions/${this.question.id}/answers`).then((response) => {
       this.answers = response.data.answers.data;
+      this.isLoading = false;
     });
   },
 }
