@@ -50,4 +50,9 @@ class Answer extends Model
     {
         return $this->hasMany(Vote::class);
     }
+
+    public function authUserVote()
+    {
+        return $this->hasOne(Vote::class)->where('user_id', auth()->id());
+    }
 }

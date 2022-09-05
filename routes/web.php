@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnswerVotingController;
 use App\Http\Controllers\FindTagsController;
 use App\Http\Controllers\GetQuestionAnswersController;
 use App\Http\Controllers\HomePageController;
@@ -12,6 +13,10 @@ Route::middleware('auth')->group(function () {
   /** Question Voting Routes */
   Route::post('questions/{question}/upvote/toggle', [QuestionVoteController::class, 'upvote'])->name('questions.upvote');
   Route::post('questions/{question}/downvote/toggle', [QuestionVoteController::class, 'downvote'])->name('questions.downvote');
+
+  /** Answer Voting Routes */
+  Route::post('answers/{answer}/upvote/toggle', [AnswerVotingController::class, 'upvote'])->name('answers.upvote');
+  Route::post('answers/{answer}/downvote/toggle', [AnswerVotingController::class, 'downvote'])->name('answers.downvote');
 });
 
 
