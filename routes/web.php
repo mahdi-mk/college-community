@@ -3,10 +3,12 @@
 use App\Http\Controllers\AnswerVotingController;
 use App\Http\Controllers\FindTagsController;
 use App\Http\Controllers\GetQuestionAnswersController;
+use App\Http\Controllers\GetTagQuestionsController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\PostAnswerController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\QuestionVoteController;
+use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {
@@ -22,7 +24,13 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/', HomePageController::class)->name('home');
 
-Route::get('tags/find', FindTagsController::class)->name('tags.find');
+/** begin: Tags Routes */
+Route::prefix('tags')->name('tags.')->group(function () {
+  Route::get('{tag}', [TagController::class, 'show'])->name('show');
+  Route::get('find', FindTagsController::class)->name('find');
+  Route::get('{tag}/questions', GetTagQuestionsController::class)->name('questions');
+});
+/** end: Tags Routes */
 
 /** begin: Questions Routes */
 Route::resource('questions', QuestionController::class);

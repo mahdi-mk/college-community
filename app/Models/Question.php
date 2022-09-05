@@ -51,4 +51,14 @@ class Question extends Model
     {
         return $this->hasMany(Vote::class);
     }
+
+    public function tags()
+    {
+        return $this->morphToMany(Tag::class, 'taggable');
+    }
+
+    public function authUserVote() 
+    {
+        return $this->hasOne(Vote::class)->where('user_id', auth()->id());
+    }
 }

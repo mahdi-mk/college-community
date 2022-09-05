@@ -8,7 +8,7 @@
           </Link>
         </div>
         <div class="d-flex gap-1 mb-3">
-          <Link class="tag" v-for="tag in question.tags" :key="tag.id">
+          <Link :href="`/tags/${tag.id}`" class="tag" v-for="tag in question.tags" :key="tag.id">
             {{ tag.name }}
           </Link>
         </div>
