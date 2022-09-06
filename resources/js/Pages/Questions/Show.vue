@@ -3,7 +3,10 @@
     <div class="col-md-8">
       <div class="question-card">
         <div class="border-bottom pb-2">
-          <h1>{{ question.title }}</h1>
+          <div class="d-flex justify-content-between align-items-center">
+            <h1>{{ question.title }}</h1>
+            <span class="status fs-3" :class="question.votes >= 0 ? 'status-primary' : 'status-danger'">{{ votes }}</span>
+          </div>
           <div class="small">
             <span class="text-muted">Asked {{ question.created_at }} by </span>
             <Link>{{ question.author.first_name + ' ' + question.author.last_name }}</Link>
@@ -54,7 +57,15 @@ export default {
   components: { QuestionAnswers, PostAnswerDialog, QuestionVotingButtons, PostAnswerModal },
   data() {
     return {
-      
+      votes: this.question.votes
+    }
+  },
+  methods: {
+    incrementVotes() {
+      this.votes++;
+    },
+    decrementVotes() {
+      this.votes--;
     }
   }
 }

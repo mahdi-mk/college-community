@@ -8,7 +8,7 @@ use App\Http\Requests\Question\UpvoteQuestion;
 use App\Models\Question;
 use App\Models\Vote;
 
-class QuestionVoteController extends Controller
+class QuestionVotingController extends Controller
 {
     /**
      * Perform upvote to the given question.
@@ -18,11 +18,10 @@ class QuestionVoteController extends Controller
      */
     public function upvote(UpvoteQuestion $request, Question $question)
     {
-        $this->toggleVote(VoteType::Upvote, $question);
+        $newUpvote = $this->toggleVote(VoteType::Upvote, $question);
 
         return response()->json([
-            'message' => 'Upvote saved',
-            'status' => 'Ok',
+            'newUpvote' => $newUpvote,
         ]);
     }
 
@@ -34,11 +33,10 @@ class QuestionVoteController extends Controller
      */
     public function downvote(DownvoteQuestion $request, Question $question)
     {
-        $this->toggleVote(VoteType::Downvote, $question);
+        $newDownvote = $this->toggleVote(VoteType::Downvote, $question);
 
         return response()->json([
-            'message' => 'Downvote saved',
-            'status' => 'Ok',
+            'newDownvote' => $newDownvote,
         ]);
     }
 
@@ -46,7 +44,7 @@ class QuestionVoteController extends Controller
     // Private Functions
     //-----------------------------------------------
 
-    private function toggleVote(VoteType $type, Question $question)
+    private function toggleVote(VoteType $type, Question $question): bool
     {
         $oldVote = Vote::where('user_id', auth()->id())->where('question_id', $question->id)->first();
 
@@ -61,7 +59,7 @@ class QuestionVoteController extends Controller
             $oldVote->delete();
 
             if ($oldVote->type == $type) {
-                return;
+                return false;
             }
         }
 
@@ -77,5 +75,7 @@ class QuestionVoteController extends Controller
         else {
             $question->decrement('votes');
         }
+
+        return true;
     }
 }

@@ -36,18 +36,32 @@ export default {
   },
   methods: {
     toggleUpvote() {      
-      this.$http.post(`/questions/${this.question.id}/upvote/toggle`).then(() => {
+      this.$http.post(`/questions/${this.question.id}/upvote/toggle`).then((response) => {
         this.hasUpvote = !this.hasUpvote;
         this.hasDownvote = false;
+        
+        if (response.data.newUpvote) {
+          this.$parent.incrementVotes();
+        }
+        else {
+          this.$parent.decrementVotes();
+        }
       });
     },
 
     toggleDownvote() {
-        this.$http.post(`/questions/${this.question.id}/downvote/toggle`).then(() => {
-          this.hasDownvote = !this.hasDownvote;
-          this.hasUpvote = false;
-        });
-      }
+      this.$http.post(`/questions/${this.question.id}/downvote/toggle`).then((response) => {
+        this.hasDownvote = !this.hasDownvote;
+        this.hasUpvote = false;
+
+        if (response.data.newDownvote) {
+          this.$parent.decrementVotes();
+        }
+        else {
+          this.$parent.incrementVotes();
+        }
+      });
+    }
   }
 }
 </script>
