@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Question\StoreQuestion;
 use App\Models\Question;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class QuestionController extends Controller
 {
@@ -15,11 +16,17 @@ class QuestionController extends Controller
      */
     public function index()
     {
+        $filter = request()->query('filter', 'latest');
+
+        if (! in_array($filter, ['latest', 'popular-this-week', 'popular-all-time', 'solved', 'unsolved', 'no-answers'])) {
+            $filter = 'latest';
+        }
+
         $questions = Question::query()
             ->select(['id', 'title', 'votes', 'created_at', 'author_id'])
             ->with(['tags:id,name', 'author:id,first_name,last_name'])
             ->withCount('answers')
-            ->orderBy('id', 'desc')
+            ->applyFilters($filter)
             ->paginate(25);
 
         return inertia('Questions/Index', [

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Builders\QuestionBuilder;
 use App\Traits\Models\HasAuthor;
 use App\Traits\Models\HasTags;
 use Carbon\Carbon;
@@ -37,6 +38,12 @@ class Question extends Model
             get: fn ($value) => Carbon::parse($value)->diffForHumans(),
         );
     }
+
+    public function newEloquentBuilder($query)
+    {
+        return new QuestionBuilder($query);
+    }
+
 
     //-------------------------------------------------
     // Relationships
