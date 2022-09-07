@@ -23,15 +23,11 @@ export default {
       type: Object,
       required: true
     },
-    authUserVote: {
-      type: Object,
-      required: true
-    }
   },
   data() {
     return {
-      hasUpvote: this.authUserVote?.type == 1,
-      hasDownvote: this.authUserVote?.type == 0
+      hasUpvote: this.question.auth_user_vote?.type == 1,
+      hasDownvote: this.question.auth_user_vote?.type == 0
     }
   },
   methods: {

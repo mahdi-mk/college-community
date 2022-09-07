@@ -25290,18 +25290,14 @@ __webpack_require__.r(__webpack_exports__);
     question: {
       type: Object,
       required: true
-    },
-    authUserVote: {
-      type: Object,
-      required: true
     }
   },
   data: function data() {
-    var _this$authUserVote, _this$authUserVote2;
+    var _this$question$auth_u, _this$question$auth_u2;
 
     return {
-      hasUpvote: ((_this$authUserVote = this.authUserVote) === null || _this$authUserVote === void 0 ? void 0 : _this$authUserVote.type) == 1,
-      hasDownvote: ((_this$authUserVote2 = this.authUserVote) === null || _this$authUserVote2 === void 0 ? void 0 : _this$authUserVote2.type) == 0
+      hasUpvote: ((_this$question$auth_u = this.question.auth_user_vote) === null || _this$question$auth_u === void 0 ? void 0 : _this$question$auth_u.type) == 1,
+      hasDownvote: ((_this$question$auth_u2 = this.question.auth_user_vote) === null || _this$question$auth_u2 === void 0 ? void 0 : _this$question$auth_u2.type) == 0
     };
   },
   methods: {
@@ -25669,8 +25665,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
-    question: Object,
-    authUserVote: Object
+    question: Object
   },
   components: {
     QuestionAnswers: _Answers_QuestionAnswers_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -27453,11 +27448,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, null, 8
   /* PROPS */
   , _hoisted_8), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Actions "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Voting "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_QuestionVotingButtons, {
-    question: $props.question,
-    authUserVote: $props.authUserVote
+    question: $props.question
   }, null, 8
   /* PROPS */
-  , ["question", "authUserVote"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Post Answer "), _hoisted_11])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Answers "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_QuestionAnswers, {
+  , ["question"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Post Answer "), _hoisted_11])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Answers "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_QuestionAnswers, {
     question: $props.question
   }, null, 8
   /* PROPS */

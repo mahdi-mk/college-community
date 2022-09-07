@@ -20,7 +20,7 @@
         <div class="d-flex justify-content-between border-top pt-2">
           <!-- Voting -->
           <div class="d-flex gap-1">
-            <QuestionVotingButtons :question="question" :authUserVote="authUserVote" />
+            <QuestionVotingButtons :question="question" />
           </div>
 
           <!-- Post Answer -->
@@ -52,7 +52,6 @@ import PostAnswerModal from "../../Components/Answer/PostAnswerModal.vue";
 export default {
   props: {
     question: Object,
-    authUserVote: Object,
   },
   components: { QuestionAnswers, PostAnswerDialog, QuestionVotingButtons, PostAnswerModal },
   data() {
