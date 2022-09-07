@@ -11,6 +11,8 @@ use App\Http\Controllers\QuestionVotingController;
 use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/', HomePageController::class)->name('home');
+
 Route::middleware('auth')->group(function () {
   /** Question Voting Routes */
   Route::post('questions/{question}/upvote/toggle', [QuestionVotingController::class, 'upvote'])->name('questions.upvote');
@@ -19,23 +21,22 @@ Route::middleware('auth')->group(function () {
   /** Answer Voting Routes */
   Route::post('answers/{answer}/upvote/toggle', [AnswerVotingController::class, 'upvote'])->name('answers.upvote');
   Route::post('answers/{answer}/downvote/toggle', [AnswerVotingController::class, 'downvote'])->name('answers.downvote');
+
+  /** Question CRUD Routes */
+  Route::resource('questions', QuestionController::class, ['except' => ['index', 'show']]);
 });
 
+/** Questions Routes */
+Route::get('questions', [QuestionController::class, 'index'])->name('questions.index');
+Route::get('questions/{question}', [QuestionController::class, 'show'])->name('questions.show');
+Route::get('questions/{question}/answers', GetQuestionAnswersController::class)->name('questions.answers');
 
-Route::get('/', HomePageController::class)->name('home');
-
-/** begin: Tags Routes */
+/** Tags Routes */
 Route::prefix('tags')->name('tags.')->group(function () {
   Route::get('{tag}', [TagController::class, 'show'])->name('show');
   Route::get('find', FindTagsController::class)->name('find');
   Route::get('{tag}/questions', GetTagQuestionsController::class)->name('questions');
 });
-/** end: Tags Routes */
 
-/** begin: Questions Routes */
-Route::resource('questions', QuestionController::class);
-/** end: Questions Routes */
-
+/** Answers Routes */
 Route::post('/answers/post', PostAnswerController::class)->name('answers.post');
-
-Route::get('/questions/{question}/answers', GetQuestionAnswersController::class)->name('questions.answers');
