@@ -16,6 +16,15 @@
         <!-- Content -->
         <div class="mt-3 mb-3" v-html="question.content"></div>
 
+        <!-- Tags -->
+        <div class="my-3 d-flex gap-1">
+          <template v-for="tag in question.tags" :key="tag.id">
+            <Link :href="`/tags/${tag.id}`" class="tag">
+              {{ tag.name }}
+            </Link>
+          </template>
+        </div>
+
         <!-- Actions -->
         <div class="d-flex justify-content-between border-top pt-2">
           <!-- Voting -->

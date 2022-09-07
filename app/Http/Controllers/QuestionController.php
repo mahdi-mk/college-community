@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Question\StoreQuestion;
 use App\Models\Question;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
 
 class QuestionController extends Controller
 {
