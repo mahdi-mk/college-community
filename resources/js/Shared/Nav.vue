@@ -30,7 +30,7 @@
             <a href="#" class="dropdown-item">Feedback</a>
             <div class="dropdown-divider"></div>
             <a href="#" class="dropdown-item">Settings</a>
-            <Link href="/logout" method="post" class="dropdown-item">Logout</Link>
+            <Link href="/logout" method="post" class="dropdown-item" as="button">Logout</Link>
           </div>
         </div>
       </div>
