@@ -25126,6 +25126,19 @@ __webpack_require__.r(__webpack_exports__);
       type: Object,
       required: true
     }
+  },
+  data: function data() {
+    return {
+      votes: this.answer.votes
+    };
+  },
+  methods: {
+    incrementVotes: function incrementVotes() {
+      this.votes++;
+    },
+    decrementVotes: function decrementVotes() {
+      this.votes--;
+    }
   }
 });
 
@@ -25161,17 +25174,29 @@ __webpack_require__.r(__webpack_exports__);
     toggleUpvote: function toggleUpvote() {
       var _this = this;
 
-      this.$http.post("/answers/".concat(this.answer.id, "/upvote/toggle")).then(function () {
+      this.$http.post("/answers/".concat(this.answer.id, "/upvote/toggle")).then(function (response) {
         _this.hasUpvote = !_this.hasUpvote;
         _this.hasDownvote = false;
+
+        if (response.data.newUpvote) {
+          _this.$parent.incrementVotes();
+        } else {
+          _this.$parent.decrementVotes();
+        }
       });
     },
     toggleDownvote: function toggleDownvote() {
       var _this2 = this;
 
-      this.$http.post("/answers/".concat(this.answer.id, "/downvote/toggle")).then(function () {
+      this.$http.post("/answers/".concat(this.answer.id, "/downvote/toggle")).then(function (response) {
         _this2.hasDownvote = !_this2.hasDownvote;
         _this2.hasUpvote = false;
+
+        if (response.data.newDownvote) {
+          _this2.$parent.decrementVotes();
+        } else {
+          _this2.$parent.incrementVotes();
+        }
       });
     }
   }
@@ -25824,7 +25849,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.answer.created_at), 1
   /* TEXT */
-  )])]), $props.answer.accepted ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_7, " Best Answer ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Content "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  )])]), $props.answer.accepted ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_7, " Best Answer ")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", {
+    key: 1,
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["status fs-3", $data.votes >= 0 ? 'status-primary' : 'status-danger'])
+  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.votes), 3
+  /* TEXT, CLASS */
+  ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Content "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "mt-3 mb-3",
     innerHTML: $props.answer.content
   }, null, 8
@@ -27403,7 +27433,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.question.title), 1
   /* TEXT */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["status fs-3", $props.question.votes >= 0 ? 'status-primary' : 'status-danger'])
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["status fs-3", $data.votes >= 0 ? 'status-primary' : 'status-danger'])
   }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.votes), 3
   /* TEXT, CLASS */
   )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_7, "Asked " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.question.created_at) + " by ", 1

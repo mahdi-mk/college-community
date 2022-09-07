@@ -33,16 +33,30 @@ export default {
   },
   methods: {
     toggleUpvote() {      
-      this.$http.post(`/answers/${this.answer.id}/upvote/toggle`).then(() => {
+      this.$http.post(`/answers/${this.answer.id}/upvote/toggle`).then((response) => {
         this.hasUpvote = !this.hasUpvote;
         this.hasDownvote = false;
+
+        if (response.data.newUpvote) {
+          this.$parent.incrementVotes();
+        }
+        else {
+          this.$parent.decrementVotes();
+        }
       });
     },
 
     toggleDownvote() {
-        this.$http.post(`/answers/${this.answer.id}/downvote/toggle`).then(() => {
+        this.$http.post(`/answers/${this.answer.id}/downvote/toggle`).then((response) => {
           this.hasDownvote = !this.hasDownvote;
           this.hasUpvote = false;
+
+          if (response.data.newDownvote) {
+            this.$parent.decrementVotes();
+          }
+          else {
+            this.$parent.incrementVotes();
+          }
         });
       }
   }

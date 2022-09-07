@@ -18,11 +18,8 @@ class AnswerVotingController extends Controller
      */
     public function upvote(UpvoteAnswer $request, Answer $answer)
     {
-        $this->toggleVote(VoteType::Upvote, $answer);
-
         return response()->json([
-            'message' => 'Upvote Saved',
-            'status' => 'Ok',
+            'newUpvote' => $this->toggleVote(VoteType::Upvote, $answer),
         ]);
     }
 
@@ -34,11 +31,8 @@ class AnswerVotingController extends Controller
      */
     public function downvote(DownvoteAnswer $request, Answer $answer)
     {
-        $this->toggleVote(VoteType::Downvote, $answer);
-
         return response()->json([
-            'message' => 'Downvote Saved',
-            'status' => 'Ok',
+            'newDownvote' => $this->toggleVote(VoteType::Downvote, $answer),
         ]);
     }
 
@@ -46,7 +40,7 @@ class AnswerVotingController extends Controller
     // Private Functions
     //-----------------------------------------------
 
-    private function toggleVote(VoteType $type, Answer $answer)
+    private function toggleVote(VoteType $type, Answer $answer): bool
     {
         $oldVote = Vote::where('user_id', auth()->id())->where('answer_id', $answer->id)->first();
 
@@ -61,7 +55,7 @@ class AnswerVotingController extends Controller
             $oldVote->delete();
 
             if ($oldVote->type == $type) {
-                return;
+                return false;
             }
         }
 
@@ -77,5 +71,7 @@ class AnswerVotingController extends Controller
         else {
             $answer->decrement('votes');
         }
+
+        return true;
     }
 }

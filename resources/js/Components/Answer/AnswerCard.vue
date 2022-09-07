@@ -13,6 +13,7 @@
       <div class="status status-primary" v-if="answer.accepted">
         Best Answer
       </div>
+      <span class="status fs-3" :class="votes >= 0 ? 'status-primary' : 'status-danger'" v-else>{{ votes }}</span>
     </div>
 
     <!-- Content -->
@@ -27,6 +28,7 @@
 
 <script>
 import AnswerVotingButtons from './AnswerVotingButtons.vue';
+
 export default {
   components: { AnswerVotingButtons },
   props: {
@@ -35,5 +37,18 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      votes: this.answer.votes
+    }
+  },
+  methods: {
+    incrementVotes() {
+      this.votes++;
+    },
+    decrementVotes() {
+      this.votes--;
+    }
+  }
 }
 </script>

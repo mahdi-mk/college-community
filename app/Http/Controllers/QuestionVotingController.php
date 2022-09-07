@@ -18,10 +18,8 @@ class QuestionVotingController extends Controller
      */
     public function upvote(UpvoteQuestion $request, Question $question)
     {
-        $newUpvote = $this->toggleVote(VoteType::Upvote, $question);
-
         return response()->json([
-            'newUpvote' => $newUpvote,
+            'newUpvote' => $this->toggleVote(VoteType::Upvote, $question),
         ]);
     }
 
@@ -33,10 +31,8 @@ class QuestionVotingController extends Controller
      */
     public function downvote(DownvoteQuestion $request, Question $question)
     {
-        $newDownvote = $this->toggleVote(VoteType::Downvote, $question);
-
         return response()->json([
-            'newDownvote' => $newDownvote,
+            'newDownvote' => $this->toggleVote(VoteType::Downvote, $question),
         ]);
     }
 
