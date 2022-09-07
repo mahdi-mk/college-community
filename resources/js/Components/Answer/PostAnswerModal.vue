@@ -15,9 +15,7 @@
           <div class="p-3 text-start">
             <h2 class="mb-0">{{ question.title }}</h2>
           </div>
-          <client-only>
-            <quill-editor v-model:value="content" id="editor" :options="editorOptions"></quill-editor>
-          </client-only>
+          <quill-editor v-model:value="content" id="editor" :options="editorOptions"></quill-editor>
         </div>
         <div class="modal-footer mt-4">
           <button type="button" class="btn btn-danger me-auto" data-bs-dismiss="modal">Discard</button>
