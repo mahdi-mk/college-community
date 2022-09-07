@@ -1,6 +1,6 @@
 <template>
   <Nav>
-    <NavLink href="/" :active="$page.url === '/'" title="Home" />
+    <!-- <NavLink href="/" :active="$page.url === '/'" title="Home" /> -->
     <NavLink href="/questions" :active="$page.url.startsWith('/questions')" title="Questions" />
   </Nav>
 
