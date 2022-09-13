@@ -12,8 +12,10 @@
       <div class="navbar-nav flex-row order-md-last">
         <div class="nav-item d-none d-md-flex me-3">
           <div class="btn-list">
-            <Link class="btn btn-primary" href="/questions/create" v-if="auth">Ask Question</Link>
-            <Link href="/login" class="btn btn-primary" v-else>Login</Link>
+            <button class="btn btn-icon btn-search" data-bs-toggle="modal" data-bs-target="#search-modal">
+              <svg style="height: 1.2rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            </button>
+            <Link href="/login" class="btn btn-primary" v-if="!auth">Login</Link>
           </div>
         </div>
         <div class="nav-item dropdown" v-if="auth">

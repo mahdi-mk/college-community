@@ -134,3 +134,25 @@ a:hover {
   border: 1px solid #407BFF;
   transition: all 0.4s;
 }
+
+.btn-search {
+  border: 1px solid transparent;
+  background-color:#113255;
+  color: white;
+  filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1)) drop-shadow(0 1px 1px rgb(0 0 0 / 0.06));
+  padding: 8px;
+}
+
+.btn-search:hover {
+  border: 1px solid rgba(#407BFF, 0.1);
+  color: #407BFF;
+}
+
+.search-input {
+  border: 2px solid #407BFF;
+}
+
+.search-input:focus {
+  box-shadow: none;
+  border: 2px solid #407BFF;
+}

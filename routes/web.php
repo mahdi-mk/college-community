@@ -8,6 +8,7 @@ use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\PostAnswerController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\QuestionVotingController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,3 +41,6 @@ Route::prefix('tags')->name('tags.')->group(function () {
 
 /** Answers Routes */
 Route::post('/answers/post', PostAnswerController::class)->name('answers.post');
+
+/** Search Route */
+Route::get('search/{keyword}', SearchController::class)->name('search');

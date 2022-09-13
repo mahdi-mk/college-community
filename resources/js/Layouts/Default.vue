@@ -11,13 +11,16 @@
       </div>
     </div>
   </div>
+
+  <SearchModal />
 </template>
 
 <script>
 import Nav from '../Shared/Nav.vue';
 import NavLink from '../Shared/NavLink.vue';
+import SearchModal from '../Components/SearchModal.vue';
 
 export default {
-  components: { NavLink, Nav }
+  components: { NavLink, Nav, SearchModal }
 }
 </script>
