@@ -30,7 +30,6 @@ Route::middleware('auth')->group(function () {
 /** Questions Routes */
 Route::get('questions', [QuestionController::class, 'index'])->name('questions.index');
 Route::get('questions/{question}', [QuestionController::class, 'show'])->name('questions.show');
-Route::get('questions/{question}/answers', GetQuestionAnswersController::class)->name('questions.answers');
 
 /** Tags Routes */
 Route::prefix('tags')->name('tags.')->group(function () {

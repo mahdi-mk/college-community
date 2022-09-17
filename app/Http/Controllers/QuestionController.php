@@ -26,7 +26,8 @@ class QuestionController extends Controller
             ->with(['tags:id,name', 'author:id,first_name,last_name'])
             ->withCount('answers')
             ->applyFilters($filter)
-            ->paginate(25);
+            ->paginate(15)
+            ->appends(request()->query());
 
         return inertia('Questions/Index', [
             'questions' => $questions
@@ -66,10 +67,23 @@ class QuestionController extends Controller
      */
     public function show(Question $question)
     {
-        $question->load(['tags', 'author', 'authUserVote']);
+        $question->load([
+            'tags:id,name',
+            'author:id,first_name,last_name',
+            'authUserVote'
+        ]);
+
+        $answers = $question->answers()
+            ->with([
+                'author:id,first_name,last_name',
+                'authUserVote:id,answer_id,type'
+            ])
+            ->select('id', 'author_id', 'content', 'votes', 'created_at')
+            ->paginate(15);
 
         return inertia('Questions/Show', [
             'question' => $question,
+            'answers' => $answers
         ]);
     }
 

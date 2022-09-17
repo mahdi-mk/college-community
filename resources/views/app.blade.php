@@ -16,7 +16,7 @@
     <!-- CSS files -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
   </head>
-  <body style="background-color: white;">
+  <body style="background-color: white;" scroll-region>
     @inertia
 
     <!-- JS files -->

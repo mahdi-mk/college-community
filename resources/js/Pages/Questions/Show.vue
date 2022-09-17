@@ -40,8 +40,14 @@
       </div>
 
       <!-- Answers -->
-      <div>
-        <QuestionAnswers :question="question" />
+      <div class="mt-4">
+        <h3 class="border-bottom py-2 mb-3">Answers ({{ answers.total }})</h3>
+
+        <template v-for="answer in answers.data" :key="answer.id">
+          <AnswerCard :answer="answer" />
+        </template>
+
+        <Pagination :links="answers.links" />
       </div>
     </div>
     <div class="col-md-4">
@@ -53,16 +59,24 @@
 </template>
 
 <script>
-import QuestionAnswers from "../Answers/QuestionAnswers.vue";
 import PostAnswerDialog from "../Answers/PostAnswerDialog.vue";
 import QuestionVotingButtons from "../../Components/Question/QuestionVotingButtons.vue";
 import PostAnswerModal from "../../Components/Answer/PostAnswerModal.vue";
+import Pagination from "../../Components/Pagination.vue";
+import AnswerCard from "../../Components/Answer/AnswerCard.vue";
 
 export default {
   props: {
     question: Object,
+    answers: Object,
   },
-  components: { QuestionAnswers, PostAnswerDialog, QuestionVotingButtons, PostAnswerModal },
+  components: {
+    PostAnswerDialog,
+    QuestionVotingButtons,
+    PostAnswerModal,
+    Pagination,
+    AnswerCard 
+  },
   data() {
     return {
       votes: this.question.votes
