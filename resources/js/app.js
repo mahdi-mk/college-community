@@ -24,11 +24,12 @@ createInertiaApp({
     // load plugins
     app.use(plugin);
 
-    // register components
+    // register global components
     app.component('Link', Link);
 
-    // register directives
+    // register global directives
     app.directive('select2', select2Directive);
+    app.directive('auth', authDirective);
 
     // configurations
     app.config.globalProperties.$http = axios;
@@ -39,6 +40,15 @@ createInertiaApp({
 })
 
 InertiaProgress.init()
+
+const authDirective = {
+  mounted: function (el, binding) {
+    if (binding.instance.$page.props.auth == null) {
+      el.setAttribute('data-bs-toggle', 'modal');
+      el.setAttribute('data-bs-target', '#auth-required-modal');
+    }
+  }
+}
 
 const select2Directive = {
   beforeMount: function (el, binding, vnode) {

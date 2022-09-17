@@ -12,6 +12,8 @@
     </div>
   </div>
 
+  <!-- Global Modals -->
+  <AuthRequiredModal />
   <SearchModal />
 </template>
 
@@ -19,8 +21,9 @@
 import Nav from '../Shared/Nav.vue';
 import NavLink from '../Shared/NavLink.vue';
 import SearchModal from '../Components/SearchModal.vue';
+import AuthRequiredModal from '../Shared/AuthRequiredModal.vue';
 
 export default {
-  components: { NavLink, Nav, SearchModal }
+  components: { NavLink, Nav, SearchModal, AuthRequiredModal }
 }
 </script>

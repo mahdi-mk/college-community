@@ -33,7 +33,7 @@
           </div>
 
           <!-- Post Answer -->
-          <button class="action-button action-button-primary" data-bs-toggle="modal" data-bs-target="#post-answer-modal">
+          <button class="action-button action-button-primary" data-bs-toggle="modal" data-bs-target="#post-answer-modal" v-auth>
             Answer
           </button>
         </div>
@@ -55,7 +55,7 @@
     </div>
   </div>
 
-  <PostAnswerModal :question="question" />
+  <PostAnswerModal :question="question" v-if="$page.props.auth !== null" />
 </template>
 
 <script>
