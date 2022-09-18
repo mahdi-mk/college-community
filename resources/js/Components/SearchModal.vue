@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import QuestionCard from '../Pages/Questions/QuestionCard.vue';
+import QuestionCard from './Question/QuestionCard.vue';
 export default {
   data() {
     return {

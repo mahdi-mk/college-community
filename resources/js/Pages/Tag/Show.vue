@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import QuestionCard from '../Questions/QuestionCard.vue';
+import QuestionCard from '../../Components/Question/QuestionCard.vue';
 
 export default {
   components: { QuestionCard },

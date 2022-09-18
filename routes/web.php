@@ -25,6 +25,9 @@ Route::middleware('auth')->group(function () {
 
   /** Question CRUD Routes */
   Route::resource('questions', QuestionController::class, ['except' => ['index', 'show']]);
+
+  /** Answers Routes */
+  Route::post('/answers/post', PostAnswerController::class)->name('answers.post');
 });
 
 /** Questions Routes */
@@ -33,13 +36,10 @@ Route::get('questions/{question}', [QuestionController::class, 'show'])->name('q
 
 /** Tags Routes */
 Route::prefix('tags')->name('tags.')->group(function () {
-  Route::get('{tag}', [TagController::class, 'show'])->name('show');
   Route::get('find', FindTagsController::class)->name('find');
+  Route::get('{tag}', [TagController::class, 'show'])->name('show');
   Route::get('{tag}/questions', GetTagQuestionsController::class)->name('questions');
 });
-
-/** Answers Routes */
-Route::post('/answers/post', PostAnswerController::class)->name('answers.post');
 
 /** Search Route */
 Route::get('search/{keyword}', SearchController::class)->name('search');

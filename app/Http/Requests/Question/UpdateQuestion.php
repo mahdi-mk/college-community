@@ -2,11 +2,10 @@
 
 namespace App\Http\Requests\Question;
 
-use App\Models\Question;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Gate;
 
-class StoreQuestion extends FormRequest
+class UpdateQuestion extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -15,7 +14,7 @@ class StoreQuestion extends FormRequest
      */
     public function authorize()
     {
-        return Gate::allows('create', Question::class);
+        return Gate::allows('update', $this->question);
     }
 
     /**

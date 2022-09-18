@@ -32,10 +32,27 @@
             <QuestionVotingButtons :question="question" />
           </div>
 
-          <!-- Post Answer -->
-          <button class="action-button action-button-primary" data-bs-toggle="modal" data-bs-target="#post-answer-modal" v-auth>
-            Answer
-          </button>
+          <div class="d-flex gap-2 align-items-center">
+            <!-- Post Answer -->
+            <button class="action-button action-button-primary" data-bs-toggle="modal" data-bs-target="#post-answer-modal" v-auth>
+              Answer
+            </button>
+
+            <!-- Owner Actions -->
+            <div class="dropdown" v-if="$page.props.can.update || $page.props.can.delete">
+              <button class="action-button action-button-primary" data-bs-toggle="dropdown" aria-expanded="false">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="19" r="1"></circle><circle cx="12" cy="5" r="1"></circle></svg>
+              </button>
+              <div class="dropdown-menu dropdown-menu-end">
+                <Link :href="`/questions/${question.id}/edit`" class="dropdown-item" v-if="$page.props.can.update">
+                  Edit
+                </Link>
+                <Link :href="`/questions/${question.id}`" as="button" method="DELETE" class="dropdown-item text-danger" v-if="$page.props.can.delete">
+                  Delete
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 

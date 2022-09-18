@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import QuestionCard from './QuestionCard.vue';
-import QuestionFiltersSidebar from './QuestionFiltersSidebar.vue';
+import QuestionCard from '../../Components/Question/QuestionCard.vue';
+import QuestionFiltersSidebar from '../../Components/Question/QuestionFiltersSidebar.vue';
 import Pagination from '../../Components/Pagination.vue';
 
 export default {
