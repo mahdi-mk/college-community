@@ -64,7 +64,7 @@
           <AnswerCard :answer="answer" />
         </template>
 
-        <Pagination :links="answers.links" />
+        <Pagination :links="answers.links" :only="['answers']" />
       </div>
     </div>
     <div class="col-md-4">

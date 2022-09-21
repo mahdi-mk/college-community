@@ -25287,7 +25287,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
-    links: Array
+    links: {
+      type: Array,
+      required: true
+    },
+    only: {
+      type: Array,
+      required: true
+    }
   }
 });
 
@@ -27846,7 +27853,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }), 128
   /* KEYED_FRAGMENT */
   )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Pagination, {
-    links: $props.questions.links
+    links: $props.questions.links,
+    only: ['questions']
   }, null, 8
   /* PROPS */
   , ["links"])])]);
@@ -28036,7 +28044,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }), 128
   /* KEYED_FRAGMENT */
   )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Pagination, {
-    links: $props.answers.links
+    links: $props.answers.links,
+    only: ['answers']
   }, null, 8
   /* PROPS */
   , ["links"])])]), _hoisted_23]), _ctx.$page.props.auth !== null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_PostAnswerModal, {

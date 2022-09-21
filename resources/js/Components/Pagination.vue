@@ -16,7 +16,14 @@
 <script>
   export default {
     props: {
-      links: Array
+      links: {
+        type: Array,
+        required: true,
+      },
+      only: {
+        type: Array,
+        required: true
+      },
     },
   }
 </script>

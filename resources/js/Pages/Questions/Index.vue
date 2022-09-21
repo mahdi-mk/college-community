@@ -6,7 +6,7 @@
     <div class="col-md-9">
       <QuestionCard v-for="question in questions.data" :key="question.id" :question="question" />
       
-      <Pagination :links="questions.links" />
+      <Pagination :links="questions.links" :only="['questions']" />
     </div>
 
   </div>

@@ -5,14 +5,13 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Question\StoreQuestion;
 use App\Http\Requests\Question\UpdateQuestion;
 use App\Models\Question;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
 class QuestionController extends Controller
 {
     public function __construct() 
     {
-        // $this->middleware('auth')->except('index', 'show');
+        $this->middleware('auth')->except('index', 'show');
     }
 
     /**
