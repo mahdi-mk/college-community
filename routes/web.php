@@ -14,25 +14,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomePageController::class)->name('home');
 
-Route::middleware('auth')->group(function () {
-  /** Question Voting Routes */
-  Route::post('questions/{question}/upvote/toggle', [QuestionVotingController::class, 'upvote'])->name('questions.upvote');
-  Route::post('questions/{question}/downvote/toggle', [QuestionVotingController::class, 'downvote'])->name('questions.downvote');
-
-  /** Answer Voting Routes */
-  Route::post('answers/{answer}/upvote/toggle', [AnswerVotingController::class, 'upvote'])->name('answers.upvote');
-  Route::post('answers/{answer}/downvote/toggle', [AnswerVotingController::class, 'downvote'])->name('answers.downvote');
-
-  /** Question CRUD Routes */
-  Route::resource('questions', QuestionController::class, ['except' => ['index', 'show']]);
-
-  /** Answers Routes */
-  Route::post('/answers/post', PostAnswerController::class)->name('answers.post');
-});
-
 /** Questions Routes */
-Route::get('questions', [QuestionController::class, 'index'])->name('questions.index');
-Route::get('questions/{question}', [QuestionController::class, 'show'])->name('questions.show');
+Route::resource('questions', QuestionController::class);
+
+/** Question Voting Routes */
+Route::post('questions/{question}/upvote/toggle', [QuestionVotingController::class, 'upvote'])->name('questions.upvote');
+Route::post('questions/{question}/downvote/toggle', [QuestionVotingController::class, 'downvote'])->name('questions.downvote');
+
+/** Answer Voting Routes */
+Route::post('answers/{answer}/upvote/toggle', [AnswerVotingController::class, 'upvote'])->name('answers.upvote');
+Route::post('answers/{answer}/downvote/toggle', [AnswerVotingController::class, 'downvote'])->name('answers.downvote');
+
+/** Answers Routes */
+Route::post('/answers/post', PostAnswerController::class)->name('answers.post');
 
 /** Tags Routes */
 Route::prefix('tags')->name('tags.')->group(function () {

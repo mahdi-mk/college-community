@@ -10,6 +10,11 @@ use App\Models\Vote;
 
 class QuestionVotingController extends Controller
 {
+    public function __construct() 
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Perform upvote to the given question.
      * 

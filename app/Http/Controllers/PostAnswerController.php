@@ -7,6 +7,11 @@ use App\Models\Answer;
 
 class PostAnswerController extends Controller
 {
+    public function __construct() 
+    {
+        $this->middleware('auth');
+    }
+
     public function __invoke(PostAnswer $request)
     {
         Answer::create($request->validated() + ['author_id' => auth()->id()]);

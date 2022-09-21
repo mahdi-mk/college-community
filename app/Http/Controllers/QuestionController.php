@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Gate;
 
 class QuestionController extends Controller
 {
+    public function __construct() 
+    {
+        // $this->middleware('auth')->except('index', 'show');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -17,8 +22,6 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        $this->authorize('viewAny', Question::class);
-
         $filter = request()->query('filter', 'latest');
 
         if (! in_array($filter, ['latest', 'popular-this-week', 'popular-all-time', 'solved', 'unsolved', 'no-answers'])) {
@@ -73,8 +76,6 @@ class QuestionController extends Controller
      */
     public function show(Question $question)
     {
-        $this->authorize('view', $question);
-
         $question->load([
             'tags:id,name',
             'author:id,first_name,last_name',
