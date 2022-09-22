@@ -9,7 +9,11 @@ class TagController extends Controller
     public function show(Tag $tag)
     {
         return inertia('Tag/Show', [
-            'tag' => $tag->loadCount('questions')->only('id', 'name', 'description', 'questions_count')
+            'tag' => $tag->only(['id', 'name', 'description']),
+            'questions' => $tag->questions()
+                ->with('author', 'tags')
+                ->withCount('answers')
+                ->paginate(20)
         ]);
     }
 }

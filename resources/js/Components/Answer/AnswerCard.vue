@@ -17,7 +17,7 @@
     </div>
 
     <!-- Content -->
-    <div class="mt-3 mb-3" v-html="answer.content"></div>
+    <div class="mt-3 mb-3 text-break" v-html="answer.content"></div>
 
     <!-- Actions -->
     <div class="border-top pt-2">

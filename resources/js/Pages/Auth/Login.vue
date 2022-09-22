@@ -4,7 +4,7 @@
       <h2 class="card-title text-center mb-4">Login to your account</h2>
       <div class="mb-3">
         <label class="form-label" for="username">Username</label>
-        <input type="text" class="form-control" name="username" id="username" v-model="form.username">
+        <input type="text" class="form-control" name="username" id="username" v-model="form.username" autocomplete="off">
         <span class="invalid-feedback" v-if="errors.username" v-text="errors.username"></span>
       </div>
       <div class="mb-3">

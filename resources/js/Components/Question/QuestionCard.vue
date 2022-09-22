@@ -14,7 +14,9 @@
         </div>
         <div class="small">
           <span class="text-muted">Asked {{ question.created_at }} by </span>
-          <Link>{{ question.author.first_name + ' ' + question.author.last_name }}</Link>
+          <Link :href="`/u/${question.author.username}`" :only="['user']">
+            {{ question.author.first_name + ' ' + question.author.last_name }}
+          </Link>
         </div>
       </div>
       <div class="col-md-2">

@@ -33,18 +33,28 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'username';
+    }
+
     //-------------------------------------------------
     // Relationships
     //-------------------------------------------------
 
     public function questions()
     {
-        return $this->hasMany('questions', 'author_id');
+        return $this->hasMany(Question::class, 'author_id');
     }
 
     public function answers()
     {
-        return $this->hasMany('answers', 'author_id');
+        return $this->hasMany(Answer::class, 'author_id');
     }
 
     public function votes() 

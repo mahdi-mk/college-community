@@ -2,10 +2,10 @@
 
 use App\Http\Controllers\AnswerVotingController;
 use App\Http\Controllers\FindTagsController;
-use App\Http\Controllers\GetQuestionAnswersController;
 use App\Http\Controllers\GetTagQuestionsController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\PostAnswerController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\QuestionVotingController;
 use App\Http\Controllers\SearchController;
@@ -32,8 +32,13 @@ Route::post('/answers/post', PostAnswerController::class)->name('answers.post');
 Route::prefix('tags')->name('tags.')->group(function () {
   Route::get('find', FindTagsController::class)->name('find');
   Route::get('{tag}', [TagController::class, 'show'])->name('show');
-  Route::get('{tag}/questions', GetTagQuestionsController::class)->name('questions');
 });
 
 /** Search Route */
 Route::get('search/{keyword}', SearchController::class)->name('search');
+
+Route::prefix('/u/{user}')->name('profile.')->group(function () {
+  Route::get('/', [ProfileController::class, 'index'])->name('index');
+  Route::get('/questions', [ProfileController::class, 'questions'])->name('questions');
+  Route::get('/answers', [ProfileController::class, 'answers'])->name('answers');
+});

@@ -9,11 +9,13 @@
 
       <!-- Questions -->
       <div class="mt-4">
-        <h3 class="border-bottom py-2">Questions ({{ tag.questions_count }})</h3>
+        <h3 class="border-bottom py-2">Questions ({{ questions.total }})</h3>
 
         <template v-for="question in questions.data" :key="question.id">
           <QuestionCard :question="question" />
         </template>
+        
+        <Pagination :links="questions.links" :only="['questions']" />
       </div>
     </div>
     <div class="col-md-4">
@@ -24,24 +26,13 @@
 
 <script>
 import QuestionCard from '../../Components/Question/QuestionCard.vue';
+import Pagination from '../../Components/Pagination.vue';
 
 export default {
-  components: { QuestionCard },
+  components: { QuestionCard, Pagination },
   props: {
-    tag: Object
+    tag: Object,
+    questions: Object
   },
-  data() {
-    return {
-      questions: Object,
-      isLoadingQuestions: true
-    };
-  },
-  mounted() {
-      this.$http.get(`/tags/${this.tag.id}/questions`).then((response) => {
-          this.questions = response.data.questions;
-          this.isLoadingQuestions = false;
-      });
-  },
-  components: { QuestionCard }
 }
 </script>

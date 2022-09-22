@@ -29,7 +29,7 @@ class QuestionController extends Controller
 
         $questions = Question::query()
             ->select(['id', 'title', 'votes', 'created_at', 'author_id'])
-            ->with(['tags:id,name', 'author:id,first_name,last_name'])
+            ->with(['tags:id,name', 'author:id,first_name,last_name,username'])
             ->withCount('answers')
             ->applyFilters($filter)
             ->paginate(15)
